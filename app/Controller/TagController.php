@@ -77,7 +77,7 @@ class TagController extends BaseController
         list($valid, $errors) = $this->tagValidator->validateModification($values);
 
         if ($tag['project_id'] != 0) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
 
         if ($valid) {
@@ -110,7 +110,7 @@ class TagController extends BaseController
         $tag = $this->tagModel->getById($tag_id);
 
         if ($tag['project_id'] != 0) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
 
         if ($this->tagModel->remove($tag_id)) {

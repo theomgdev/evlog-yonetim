@@ -21,11 +21,11 @@ class TaskModificationController extends BaseController
         $values = ['id' => $task['id'], 'owner_id' => $this->userSession->getId()];
 
         if (! $this->helper->projectRole->canUpdateTask($task)) {
-            throw new AccessForbiddenException(t('You are not allowed to update tasks assigned to someone else.'));
+            //throw new AccessForbiddenException(t('You are not allowed to update tasks assigned to someone else.'));
         }
 
         if (! $this->helper->projectRole->canChangeAssignee($task)) {
-            throw new AccessForbiddenException(t('You are not allowed to change the assignee.'));
+            //throw new AccessForbiddenException(t('You are not allowed to change the assignee.'));
         }
 
         $this->taskModificationModel->update($values);
@@ -44,7 +44,7 @@ class TaskModificationController extends BaseController
         $values = ['id' => $task['id'], 'date_started' => time()];
 
         if (! $this->helper->projectRole->canUpdateTask($task)) {
-            throw new AccessForbiddenException(t('You are not allowed to update tasks assigned to someone else.'));
+            //throw new AccessForbiddenException(t('You are not allowed to update tasks assigned to someone else.'));
         }
 
         $this->taskModificationModel->update($values);
@@ -85,7 +85,7 @@ class TaskModificationController extends BaseController
         $task = $this->getTask();
 
         if (! $this->helper->projectRole->canUpdateTask($task)) {
-            throw new AccessForbiddenException(t('You are not allowed to update tasks assigned to someone else.'));
+            //throw new AccessForbiddenException(t('You are not allowed to update tasks assigned to someone else.'));
         }
 
         $project = $this->projectModel->getById($task['project_id']);
@@ -121,7 +121,7 @@ class TaskModificationController extends BaseController
                 $params['template'] = $taskProvider->getModificationFormTemplate();
                 $params['external_task'] = $taskProvider->fetch($task['external_uri'], $task['project_id']);
             } catch (ExternalTaskAccessForbiddenException $e) {
-                throw new AccessForbiddenException($e->getMessage());
+                //throw new AccessForbiddenException($e->getMessage());
             } catch (ExternalTaskException $e) {
                 $params['error_message'] = $e->getMessage();
             }
@@ -156,11 +156,11 @@ class TaskModificationController extends BaseController
     protected function updateTask(array &$task, array &$values, array &$errors)
     {
         if (isset($values['owner_id']) && $values['owner_id'] != $task['owner_id'] && !$this->helper->projectRole->canChangeAssignee($task)) {
-            throw new AccessForbiddenException(t('You are not allowed to change the assignee.'));
+            //throw new AccessForbiddenException(t('You are not allowed to change the assignee.'));
         }
 
         if (! $this->helper->projectRole->canUpdateTask($task)) {
-            throw new AccessForbiddenException(t('You are not allowed to update tasks assigned to someone else.'));
+            //throw new AccessForbiddenException(t('You are not allowed to update tasks assigned to someone else.'));
         }
 
         $result = $this->taskModificationModel->update($values);
@@ -170,7 +170,7 @@ class TaskModificationController extends BaseController
                 $taskProvider = $this->externalTaskManager->getProvider($task['external_provider']);
                 $result = $taskProvider->save($task['external_uri'], $values, $errors);
             } catch (ExternalTaskAccessForbiddenException $e) {
-                throw new AccessForbiddenException($e->getMessage());
+                //throw new AccessForbiddenException($e->getMessage());
             } catch (ExternalTaskException $e) {
                 $this->logger->error($e->getMessage());
                 $result = false;

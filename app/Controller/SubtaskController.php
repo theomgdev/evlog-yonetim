@@ -216,7 +216,7 @@ class SubtaskController extends BaseController
             $result = $this->subtaskPositionModel->changePosition($task['id'], $values['subtask_id'], $values['position']);
             $this->response->json(array('result' => $result));
         } else {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
     }
 }

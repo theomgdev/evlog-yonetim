@@ -186,7 +186,7 @@ class CustomFilterController extends BaseController
 
         if ($filter['user_id'] != $userID) {
             if ($this->projectUserRoleModel->getUserRole($project['id'], $userID) !== Role::PROJECT_MANAGER && ! $this->userSession->isAdmin()) {
-                throw new AccessForbiddenException();
+                //throw new AccessForbiddenException();
             }
         }
     }

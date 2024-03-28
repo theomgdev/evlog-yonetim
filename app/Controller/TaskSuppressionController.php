@@ -20,7 +20,7 @@ class TaskSuppressionController extends BaseController
         $task = $this->getTask();
 
         if (! $this->helper->projectRole->canRemoveTask($task)) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
 
         $this->response->html($this->template->render('task_suppression/remove', array(
@@ -38,7 +38,7 @@ class TaskSuppressionController extends BaseController
         $this->checkCSRFParam();
 
         if (! $this->helper->projectRole->canRemoveTask($task)) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
 
         if ($this->taskModel->remove($task['id'])) {

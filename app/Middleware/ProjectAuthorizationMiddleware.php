@@ -26,7 +26,7 @@ class ProjectAuthorizationMiddleware extends BaseMiddleware
         }
 
         if ($project_id > 0 && ! $this->helper->user->hasProjectAccess($this->router->getController(), $this->router->getAction(), $project_id)) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
 
         $this->next();

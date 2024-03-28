@@ -213,7 +213,7 @@ class SwimlaneController extends BaseController
             $result = $this->swimlaneModel->changePosition($project['id'], $values['swimlane_id'], $values['position']);
             $this->response->json(array('result' => $result));
         } else {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
     }
 }

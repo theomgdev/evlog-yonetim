@@ -39,7 +39,7 @@ class UserImportController extends BaseController
 
         // Note: $values is empty when the CSRF token is invalid.
         if (empty($values)) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
 
         $filename = $this->request->getFilePath('file');

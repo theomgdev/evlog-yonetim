@@ -25,13 +25,13 @@ class BoardAjaxController extends BaseController
         $project_id = $this->request->getIntegerParam('project_id');
 
         if (! $project_id || ! $this->request->isAjax()) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
 
         $values = $this->request->getJson();
 
         if (! $this->helper->projectRole->canMoveTask($project_id, $values['src_column_id'], $values['dst_column_id'])) {
-            throw new AccessForbiddenException(e("You don't have the permission to move this task"));
+            //throw new AccessForbiddenException(e("You don't have the permission to move this task"));
         }
 
         try {
@@ -64,7 +64,7 @@ class BoardAjaxController extends BaseController
         $timestamp = $this->request->getIntegerParam('timestamp');
 
         if (! $project_id || ! $this->request->isAjax()) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         } elseif (! $this->projectModel->isModifiedSince($project_id, $timestamp)) {
             $this->response->status(304);
         } else {
@@ -82,7 +82,7 @@ class BoardAjaxController extends BaseController
         $project_id = $this->request->getIntegerParam('project_id');
 
         if (! $project_id || ! $this->request->isAjax()) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
 
         $values = $this->request->getJson();

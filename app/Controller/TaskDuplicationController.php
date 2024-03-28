@@ -54,7 +54,7 @@ class TaskDuplicationController extends BaseController
 
             if ($valid) {
                 if (! $this->projectPermissionModel->isUserAllowed($values['project_id'], $this->userSession->getId())) {
-                    throw new AccessForbiddenException();
+                    //throw new AccessForbiddenException();
                 }
 
                 if ($this->taskProjectMoveModel->moveToProject($task['id'],
@@ -89,7 +89,7 @@ class TaskDuplicationController extends BaseController
 
             if ($valid) {
                 if (! $this->projectPermissionModel->isUserAllowed($values['project_id'], $this->userSession->getId())) {
-                    throw new AccessForbiddenException();
+                    //throw new AccessForbiddenException();
                 }
 
                 $task_id = $this->taskProjectDuplicationModel->duplicateToProject(

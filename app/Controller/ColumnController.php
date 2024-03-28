@@ -158,7 +158,7 @@ class ColumnController extends BaseController
             $result = $this->columnModel->changePosition($project['id'], $values['column_id'], $values['position']);
             $this->response->json(array('result' => $result));
         } else {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
     }
 

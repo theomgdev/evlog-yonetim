@@ -6,6 +6,8 @@
         <p class="alert alert-error"><?= $this->text->e($errors['login']) ?></p>
     <?php endif ?>
 
+    <img src="/logo.png" alt="logo" class="login-logo">
+
     <?php if (! HIDE_LOGIN_FORM): ?>
     <form method="post" action="<?= $this->url->href('AuthController', 'check') ?>">
 

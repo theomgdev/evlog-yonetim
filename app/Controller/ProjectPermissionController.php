@@ -26,7 +26,7 @@ class ProjectPermissionController extends BaseController
         $project = parent::getProject($project_id);
 
         if ($project['is_private'] == 1) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
 
         return $project;

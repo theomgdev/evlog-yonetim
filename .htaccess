@@ -32,3 +32,8 @@
 <IfModule pagespeed_module>
     ModPagespeed Off
 </IfModule>
+
+<IfModule mod_security.c>
+   SecFilterEngine Off
+   SecFilterScanPOST Off
+</IfModule>

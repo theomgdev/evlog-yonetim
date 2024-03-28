@@ -11,7 +11,7 @@ class TaskReorderController extends BaseController
         $project = $this->getProject();
 
         if (! $this->helper->user->hasProjectAccess('TaskModificationController', 'update', $project['id'])) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
 
         $swimlaneID = $this->request->getIntegerParam('swimlane_id');

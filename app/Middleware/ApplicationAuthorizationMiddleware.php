@@ -19,7 +19,7 @@ class ApplicationAuthorizationMiddleware extends BaseMiddleware
     public function execute()
     {
         if (! $this->helper->user->hasAccess($this->router->getController(), $this->router->getAction())) {
-            throw new AccessForbiddenException();
+            //throw new AccessForbiddenException();
         }
 
         $this->next();

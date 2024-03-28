@@ -22,7 +22,7 @@ class TaskProjectDuplicationModel extends TaskDuplicationModel
      * @param  integer    $owner_id
      * @return boolean|integer
      */
-    public function duplicateToProject($task_id, $project_id, $swimlane_id = null, $column_id = null, $category_id = null, $owner_id = null)
+    public function duplicateToProject($task_id, $project_id, $swimlane_id = null, $column_id = null, $category_id = null, $owner_id = null, $link = true)
     {
         $values = $this->prepare($task_id, $project_id, $swimlane_id, $column_id, $category_id, $owner_id);
         $this->checkDestinationProjectValues($values);
@@ -30,7 +30,9 @@ class TaskProjectDuplicationModel extends TaskDuplicationModel
 
         if ($new_task_id !== false) {
             $this->tagDuplicationModel->duplicateTaskTagsToAnotherProject($task_id, $new_task_id, $project_id);
-            $this->taskLinkModel->create($new_task_id, $task_id, 4);
+            if ($link) {
+                $this->taskLinkModel->create($new_task_id, $task_id, 4);
+            }
 
             $attachments = $this->taskFileModel->getAll($task_id);
             $externalLinks = $this->taskExternalLinkModel->getAll($task_id);
